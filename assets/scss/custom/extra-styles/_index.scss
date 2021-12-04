@@ -1,0 +1,117 @@
+@import "./animations";
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.project-card-actions {
+  right: 5%;
+  bottom: 5%;
+}
+
+.tooltip {
+  position: absolute !important;
+  &.b-tooltip {
+    transition: ease-in-out opacity 0.3s !important;
+    display: block !important;
+    opacity: 0.9;
+    outline: 0 !important;
+}
+}
+
+@media (max-width: 570px) {
+  .add-btn-col {
+    display: flex;
+    border-top: 1px solid rgba($text-color-h, 0.8);
+    justify-content: center;
+    padding: 1rem 0 0.5rem 0;
+    margin: 1rem 0 0.5rem 0;
+    .float-sm-right {
+      width: auto;
+    }
+  }
+  .card-group-search {
+    width: 100%;
+    .form-group {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      .form-control {
+        width: 100%;
+      }
+    }
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-group--custom {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: auto;
+  column-count: 3;
+  grid-column-gap: 1.25rem;
+  -moz-column-gap: 1.25rem;
+  column-gap: 1.25rem;
+  orphans: 1;
+  widows: 1;
+}
+
+.open-project {
+  border-radius: 3px;
+  padding: 3px;
+  width: fit-content;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: 0.1s ease-in-out all;
+  &:hover {
+    border-color: rgba($text-color-h, 0.8);
+    background: rgba($text-color-h, 0.3);
+  }
+}
+
+.card--custom {
+  justify-self: center;
+  min-width: 350px;
+  width: fit-content;
+  max-width: 700px;
+}
+
+@media (max-width: 420px) {
+  .container-fluid {
+    padding: 0 !important;
+  }
+
+  .card-group--custom {
+    width: 100%;
+    grid-template-columns: 100%;
+  }
+
+  .card--custom {
+    width: 100% !important;
+    min-width: 10px !important;
+  }
+}
+
+td {
+  white-space: nowrap !important;
+}
+th {
+  div {
+    white-space: nowrap !important;
+  }
+}
+
+.stepTitle {
+  color: $text-color-h;
+}
+
+.mx-icon-calendar,
+.mx-icon-clear {
+  color: $text-color-h !important;
+}
+
+* {
+  outline: none;
+}

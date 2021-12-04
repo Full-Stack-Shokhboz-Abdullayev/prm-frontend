@@ -1,0 +1,100 @@
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "custom/structure/general";
+@import "custom/structure/page-head";
+html {
+  //Fonts
+
+  @import "config/default/variables";
+  @import "./node_modules/bootstrap/scss/mixins.scss";
+  @import "./bootstrap.scss";
+  // custom styles
+  @import "custom/extra-styles";
+
+  --text-color: $text-color-h;
+
+  // Structure
+  @import "custom/structure/left-menu";
+  @import "custom/structure/page_head__vars";
+  @import "custom/structure/topbar";
+  @import "custom/structure/footer";
+  @import "custom/structure/layouts";
+  @import "custom/structure/horizontal-nav";
+
+  //Components
+  @import "custom/components/avatar";
+  @import "custom/components/helper";
+  @import "custom/components/social";
+  @import "custom/components/widgets";
+  @import "custom/components/custom-checkbox";
+  @import "custom/components/custom-radio";
+  @import "custom/components/ribbons";
+  @import "custom/components/print";
+  @import "custom/components/preloader";
+
+  //Pages
+  @import "custom/pages/authentication";
+  @import "custom/pages/error";
+  @import "custom/pages/logout";
+  @import "custom/pages/profile";
+
+  // Plugins
+  @import "custom/plugins/calendar";
+  @import "custom/plugins/datatable";
+  @import "custom/plugins/sweetalert";
+  @import "custom/plugins/responsive-table";
+  @import "custom/plugins/bootstrap-tables";
+  @import "custom/plugins/form-wizard";
+  @import "custom/plugins/datepicker";
+}
+html[data-theme="dark"] {
+  //Core files
+  @import "config/default/variables-dark";
+  @import "./node_modules/bootstrap/scss/mixins.scss";
+  @import "./bootstrap-dark.scss";
+  // custom styles
+  @import "custom/extra-styles";
+  --text-color: $text-color-h;
+  // Structure
+  @import "custom/structure/left-menu";
+  @import "custom/structure/page_head__vars";
+  @import "custom/structure/topbar";
+  @import "custom/structure/footer";
+  @import "custom/structure/layouts";
+  @import "custom/structure/horizontal-nav";
+
+  //Components
+  @import "custom/components/avatar";
+  @import "custom/components/helper";
+  @import "custom/components/social";
+  @import "custom/components/widgets";
+  @import "custom/components/custom-checkbox";
+  @import "custom/components/custom-radio";
+  @import "custom/components/ribbons";
+  @import "custom/components/print";
+  @import "custom/components/preloader";
+
+  //Pages
+  @import "custom/pages/authentication";
+  @import "custom/pages/error";
+  @import "custom/pages/logout";
+  @import "custom/pages/profile";
+
+  // Plugins
+  @import "custom/plugins/calendar";
+  @import "custom/plugins/datatable";
+  @import "custom/plugins/sweetalert";
+  @import "custom/plugins/responsive-table";
+  @import "custom/plugins/bootstrap-tables";
+  @import "custom/plugins/form-wizard";
+  @import "custom/plugins/datepicker";
+  @import "custom/plugins/slimscroll";
+}
+@import "custom/fonts/fonts";
+// icons
+@import "custom/plugins/icons";
+@import "custom/plugins/chartjs";
+
+table {
+  margin-bottom: 0 !important;
+}
