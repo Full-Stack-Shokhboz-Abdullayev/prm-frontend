@@ -1,20 +1,5 @@
-# PRM - [Belify's](https://beliefy.agency) project. Coming soon...
+# PRM - [Beliefy's](https://beliefy.agency) project. Coming soon...
 
-## Build Setup
+## Hackathon 2021 - Open Data Challenge: Open Data Consuming Project.
 
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Web Frontend Part
