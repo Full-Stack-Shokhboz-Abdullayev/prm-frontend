@@ -48,14 +48,14 @@
             <i class="mdi mdi-access-point mr-1"></i>
             {{ item.status }}
           </div>
-          <b-card-title>
-            <h4
-              @click="showInfo(item.id)"
-              class="text-dark card-title open-project"
-              :id="'title' + item.id"
-            >
+          <b-card-title
+           @click="showInfo(item.id)"
+            class="text-dark card-title open-project mb-3"
+            :id="'prtitle' + item.id">
+            <p class="m-0 truncate position-static">
               {{ item.title }}
-            </h4>
+            </p>
+          
             <b-tooltip :target="'title' + item.id" placement="left"
               >Ma'lumot</b-tooltip
             >
@@ -148,6 +148,8 @@ import { mapState, mapActions } from "vuex";
 import permissionsMixin from "~/mixins/permissions.js";
 import savingAlert from "~/mixins/savingAlert.js";
 import statuses from "~/utils/data-blueprints/statuses.blueprint.js";
+import fields from "~/utils/data-blueprints/project-view.blueprint.js";
+console.log(fields);
 export default {
   head() {
     return {
@@ -170,150 +172,7 @@ export default {
         pageOptions: [10, 20, 30, 40, 50],
         sortBy: "title",
         filterOn: ["title"],
-        fields: [
-          { key: "id", thClass: "d-none", tdClass: "d-none" },
-          {
-            label: "Nomi",
-            key: "title",
-            sortable: true
-          },
-          {
-            label: "Tashkilot",
-            key: "owner_company",
-            sortable: true
-          },
-          {
-            label: "Yo'nalishi",
-            key: "direction",
-            sortable: true
-          },
-          {
-            label: "Tarmoq Yo'nalishi",
-            key: "net_direction",
-            sortable: true
-          },
-          {
-            label: "Shartnoma Raqami",
-            key: "contract_number",
-            sortable: true
-          },
-          {
-            label: "Status",
-            key: "status",
-            sortable: false
-          },
-          {
-            label: "Rejadagi qiymati (mln so'm)",
-            key: "value_in_plan",
-            sortable: true
-          },
-          {
-            label: "Amaldagi qiymati (mln so'm)",
-            key: "value_in_practice",
-            sortable: true
-          },
-          {
-            label: "Rejadagi o'z sarmoyasi (mln so'm)",
-            key: "financing_own_investment_in_plan",
-            sortable: true
-          },
-          {
-            label: "Amaldagi o'z sarmoyasi (mln so'm)",
-            key: "financing_own_investment_in_practice",
-            sortable: true
-          },
-          {
-            label: "Rejadagi Bank sarmoyasi (mln so'm)",
-            key: "financing_bank_in_plan",
-            sortable: true
-          },
-          {
-            label: "Amaldagi Bank sarmoyasi (mln so'm)",
-            key: "financing_bank_in_practice",
-            sortable: true
-          },
-          {
-            label: "Rejadagi Xorijiy Bank sarmoyasi (ming dollar)",
-            key: "financing_international_bank_in_plan",
-            sortable: true
-          },
-          {
-            label: "Amaldagi Xorijiy Bank sarmoyasi (ming dollar)",
-            key: "financing_international_bank_in_practice",
-            sortable: true
-          },
-          {
-            label: "Rejadagi Xorijiy Investitsiya sarmoyasi (ming dollar)",
-            key: "financing_international_investment_in_plan",
-            sortable: true
-          },
-          {
-            label: "Amaldagi Xorijiy Investitsiya sarmoyasi (ming dollar)",
-            key: "financing_international_investment_in_practice",
-            sortable: true
-          },
-          {
-            label: "Rejadagi Ish o'rinlari",
-            key: "workplaces_in_plan",
-            sortable: true
-          },
-          {
-            label: "Amaldagi Ish o'rinlari",
-            key: "workplaces_in_practice",
-            sortable: true
-          },
-          {
-            label: "RIP 459",
-            key: "rip_459",
-            formatter: val => this.boolFormatter(val, ["Bor", "Yo'q"]),
-            sortable: true
-          },
-          {
-            label: "Ishga tushganligi",
-            key: "in_production",
-            formatter: val => this.boolFormatter(val, ["Ha", "Yo'q"]),
-            sortable: true
-          },
-          {
-            label: "Ishga tushmaslik xavfi",
-            key: "danger_of_cancellation",
-            formatter: val => this.boolFormatter(val, ["Bor", "Yo'q"]),
-            sortable: true
-          },
-          {
-            label: "Bekor Qilingan",
-            key: "cancelled",
-            formatter: val => this.boolFormatter(val, ["Ha", "Yo'q"]),
-            sortable: true
-          },
-          {
-            label: "O'zlashtirilgan",
-            key: "owned",
-            formatter: val => this.boolFormatter(val, ["Ha", "Yo'q"]),
-            sortable: true
-          },
-          {
-            label: "Shahar/Tuman",
-            key: "city.title"
-          },
-          {
-            label: "Xizmat ko'rsatuvchi bank",
-            key: "serving_bank",
-            sortable: true
-          },
-          {
-            label: "Rejadagi Ishga tushish vaqti",
-            key: "start_date_in_plan",
-            formatter: this.dateFormatter,
-            sortable: true
-          },
-          {
-            label: "Amaldagi Ishga tushish vaqti",
-            key: "start_date_in_practice",
-            formatter: this.dateFormatter,
-            sortable: true
-          }
-        ]
+        fields
       };
     }
   },
@@ -347,7 +206,7 @@ export default {
           sortable: true
         },
         {
-          label: "Shartnoma Raqami",
+          label: "Dalolatnoma Raqami",
           key: "contract_number",
           sortable: true
         },
@@ -381,22 +240,13 @@ export default {
       this.selectedIndex = this.projects.findIndex(item => item.id === id);
       this.$bvModal.show("modal");
     },
-    boolFormatter(value, [ifTrue, ifFalse]) {
-      return value ? ifTrue : ifFalse;
-    },
-    dateFormatter(value) {
-      let d = "";
-      if (value) {
-        d = new Date(value).toLocaleDateString("uz-Cyrl-UZ");
-      }
-      return d;
-    },
+    
     isDate(date) {
       return new Date(date) !== "Invalid Date" && !isNaN(new Date(date));
     },
     download() {
       this.$axios({
-        url: "http://165.22.27.188:5000/api/projects/download",
+        url: "/projects/download",
         method: "GET",
         responseType: "blob"
       }).then(response => {

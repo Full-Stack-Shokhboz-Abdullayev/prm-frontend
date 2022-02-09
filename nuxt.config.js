@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 export default {
   loading: {
     color: "#1ABC9C",
@@ -81,24 +83,11 @@ export default {
    ** Nuxt.js modules
    */
   modules: ["bootstrap-vue/nuxt", "@nuxtjs/axios", "@nuxtjs/dotenv"],
-
-  /*
-   ** Build configuration
-   ** See https://nuxtjs.org/api/configuration-build/
-   */
   env: {
-    auth: process.env.VUE_APP_DEFAULT_AUTH,
-    apikey: process.env.VUE_APP_APIKEY,
-    authdomain: process.env.VUE_APP_AUTHDOMAIN,
-    databaseurl: process.env.VUE_APP_DATABASEURL,
-    projectid: process.env.VUE_APP_PROJECTId,
-    storgebucket: process.env.VUE_APP_STORAGEBUCKET,
-    message: process.env.VUE_APP_MESSAGINGSENDERID,
-    appid: process.env.VUE_APP_APPId,
-    measurement: process.env.VUE_APP_MEASUREMENTID
+    baseURL: process.env.BASE_URL
   },
   axios: {
-    baseURL: "http://165.22.27.188:5000/api"
+    baseURL: process.env.BASE_URL
   },
-  buildModules: [["@nuxtjs/dotenv", { filename: ".env." + process.env.ENV }]]
+  buildModules: [["@nuxtjs/dotenv", { filename: ".env" }]]
 };

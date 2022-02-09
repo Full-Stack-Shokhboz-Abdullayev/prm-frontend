@@ -125,7 +125,7 @@ export default {
             sortable: true
           },
           {
-            label: "Shartnoma Raqami",
+            label: "Dalolatnoma Raqami",
             key: "contract_number",
             sortable: true
           },

@@ -61,7 +61,6 @@
 .open-project {
   border-radius: 3px;
   padding: 3px;
-  width: fit-content;
   cursor: pointer;
   border: 1px solid transparent;
   transition: 0.1s ease-in-out all;
@@ -114,4 +113,13 @@ th {
 
 * {
   outline: none;
+}
+
+.truncate {
+  width: auto;
+  max-width: 100%;
+  white-space: nowrap;
+  height: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

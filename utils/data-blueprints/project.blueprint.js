@@ -10,7 +10,7 @@ export default cities => [
         value: ""
       },
       {
-        label: "Tashkilot",
+        label: "Tashabbuskor nomi",
         key: "owner_company",
         value: ""
       },
@@ -42,19 +42,19 @@ export default cities => [
     icon: "",
     fields: [
       {
-        label: "Shartnoma Raqami",
+        label: "Dalolatnoma Raqami",
         key: "contract_number",
         type: "number",
         value: 0
       },
       {
-        label: "Rejadagi qiymati (mln so'm)",
+        label: "Rejadagi Umumiy qiymati (mln so'm)",
         key: "value_in_plan",
         type: "number",
         value: 0
       },
       {
-        label: "Amaldagi qiymati (mln so'm)",
+        label: "Amaldagi Umumiy qiymati (mln so'm)",
         key: "value_in_practice",
         type: "number",
         value: 0

@@ -104,11 +104,12 @@ export default {
       const data = {};
       for (const tab of this.projectData) {
         for (const field of tab.fields) {
-          if (field.value) {
+          if (field.value || field.value === false || (field.type === "date")) {
             data[field.key] = field.value;
           }
         }
       }
+      console.log(data);
 
       return this.editing
         ? await this.UPDATE_PROJECT({
