@@ -2,7 +2,7 @@
   <div>
     <PageHeader :title="title" :items="items" />
 
-    <div class="row mb-2">
+    <div class="row mb-2" v-if="hasAccess && currentUser.role === 'admin'">
       <div class="col-sm-12 add-btn-col" v-if="hasAccess">
         <div class="float-sm-right d-flex align-items-center">
           <nuxt-link :to="{ name: 'base-users-add' }" class="btn btn-primary"
@@ -15,7 +15,9 @@
       <DataTable
         key="userdata"
         v-bind="usersDataTable"
-        :actions="true"
+        :actions="hasAccess && currentUser.role === 'admin'"
+        :disabledActionIf="(user) =>  user.role === 'admin'"
+        disabledActionMessage="Adminlarni Tahrirlash mumkin emas!"
         :onEdit="editUser"
         :onDelete="deleteUser"
         title="Admin/Moderatorlar Jadval ko'rinishida"
@@ -38,6 +40,7 @@ export default {
   computed: {
     ...mapState("modules/cities.store", ["cities"]),
     ...mapState("modules/users.store", ["users"]),
+    ...mapState("modules/auth.store", {currentUser: "user"}),
     usersDataTable() {
       return {
         title: "Admin/Moderatorlar",
@@ -58,7 +61,7 @@ export default {
           },
           {
             label: "Shahar/Tuman",
-            key: "city",
+            key: "city.title",
             sortable: true
           },
           {
@@ -105,7 +108,7 @@ export default {
       if (result.isConfirmed) {
         await this.DELETE_USER(id);
         Swal.fire("O'chirildi!", "Muvaffaqiyatli o'chirildi.", "success");
-        console.log(this.hasAccess)
+        
       }
     },
     editUser(id) {

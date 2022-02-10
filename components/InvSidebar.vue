@@ -123,7 +123,7 @@ export default {
       this.$router.afterEach((routeTo, routeFrom) => {
         this._activateMenuDropdown();
       });
-      console.log(this.user);
+      ;
     }
   },
   methods: {
@@ -197,7 +197,7 @@ export default {
           if (parent2) {
             const parent3 = parent2.parentElement;
             if (parent3) {
-              // console.log(parent3)
+              // 
               parent3.classList.add("show");
               const parent4 = parent3.parentElement;
               if (parent4) {

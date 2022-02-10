@@ -11,7 +11,9 @@ export default {
     actions: { type: Boolean, default: false },
     onEdit: { type: Function, default: () => {} },
     onDelete: { type: Function, default: () => {} },
-    stickyHeader: { type: Boolean, default: false }
+    stickyHeader: { type: Boolean, default: false },
+    disabledActionIf: { type: Function, default: () =>  false },
+    disabledActionMessage: { type: String, default: "Tahrirlab bo'lmaydi!" },
   },
   data() {
     const state = {
@@ -94,9 +96,18 @@ export default {
           @filtered="onFiltered"
         >
           <template v-if="actions" #cell(actions)="{item}">
+            <b-tooltip v-if="disabledActionIf(item)" :target="'action-container' + item.id" placement="top"
+              
+              >
+              {{disabledActionMessage}}
+              </b-tooltip
+            >
+
+          <div class="d-flex justify-content-center align-items-center" :id="'action-container'+item.id">
             <b-button
               variant="success"
               @click="onEdit(item.id)"
+              :disabled="disabledActionIf(item)"
               class="mr-2"
               :id="'edit' + item.id"
             >
@@ -106,6 +117,7 @@ export default {
               >Tahrirlash</b-tooltip
             >
             <b-button
+              :disabled="disabledActionIf(item)"
               variant="danger"
               :id="'delete' + item.id"
               @click="onDelete(item.id)"
@@ -115,6 +127,8 @@ export default {
             <b-tooltip :target="'delete' + item.id" placement="top"
               >O'chirish</b-tooltip
             >
+
+            </div>
           </template>
           <template #cell(status)="data">
             <span :class="`badge bg-${statusColors[data.item.status]}`">

@@ -11,7 +11,6 @@ export const mutations = {
     state.user = payload;
   },
   SET_ERRORS(state, payload) {
-    console.log("mutation", payload);
     if (Array.isArray(payload)) {
       state.errors = payload;
     } else {
@@ -19,10 +18,8 @@ export const mutations = {
         state.errors.push(payload);
       }
     }
-    console.log(state.errors);
   },
   SET_PROFILE_ERRORS(state, payload) {
-    console.log("mutation", payload);
     if (Array.isArray(payload)) {
       state.profileErrors = payload;
     } else {
@@ -30,13 +27,11 @@ export const mutations = {
         state.profileErrors.push(payload);
       }
     }
-    console.log(state.profileErrors);
   }
 };
 
 export const actions = {
   async LOGIN({ dispatch, commit }, payload) {
-    console.log("login");
     try {
       const {
         data: { data: tokensData }
@@ -72,25 +67,25 @@ export const actions = {
     let res = true;
     try {
       const {
-        data: { success, data: user },
+        data: { success, data: user }
       } = await this.$protectedAxios.patch("/user-profile", payload);
       commit("SET_USER", user);
-      res = success
+      res = success;
     } catch {
       commit("SET_PROFILE_ERRORS", err.response.data.message);
-      res = false
+      res = false;
     }
-    console.log('Res', res);
-    return res
+    return res;
   },
   async DELETE_USER({ commit }) {
-    const {data: {success}} = await this.$protectedAxios.delete('/user-profile')
-    
+    const {
+      data: { success }
+    } = await this.$protectedAxios.delete("/user-profile");
+
     if (success) {
       commit("SET_USER", {});
     }
 
-    return success
-  
+    return success;
   }
 };

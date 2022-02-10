@@ -125,7 +125,7 @@ export default {
     ...mapActions("modules/auth.store", ["LOGIN"]),
 
     async onSubmit() {
-      console.log(this.errors);
+      ;
       this.loading = true;
       this.SET_ERRORS([]);
       await this.LOGIN(this.form);

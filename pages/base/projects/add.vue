@@ -80,15 +80,12 @@ export default {
 
         const { editing_project_id } = this.$route.query;
 
-
-       
         setTimeout(() => {
-            const editingProject = this.GET_PROJECT_BY_ID(
-              new Number(editing_project_id)
-            );
-            scrape(editingProject);
+          const editingProject = this.GET_PROJECT_BY_ID(
+            new Number(editing_project_id)
+          );
+          scrape(editingProject);
         }, 0);
-       
       }
     },
     async onSave() {
@@ -104,12 +101,25 @@ export default {
       const data = {};
       for (const tab of this.projectData) {
         for (const field of tab.fields) {
-          if (field.value || field.value === false || (field.type === "date")) {
+          const isDate =
+            field.type === "date" &&
+            field.value &&
+            new String(field.value).split(" ").length > 0;
+
+          if (field.type === "number") {
+            data[field.key] = new Number(field.value);
+          } else if (
+            field.value ||
+            (field.type === "select" &&
+              (field.value || field.value === false)) ||
+            isDate
+          ) {
             data[field.key] = field.value;
+          } else {
+            data[field.key] = null;
           }
         }
       }
-      console.log(data);
 
       return this.editing
         ? await this.UPDATE_PROJECT({

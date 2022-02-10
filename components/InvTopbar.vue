@@ -159,26 +159,6 @@ export default {
 
       </ul>
 
-      <!-- LOGO -->
-      <!-- <div class="logo-box">
-        <nuxt-link to="/" class="logo logo-dark text-center">
-          <span class="logo-sm">
-            <img src="~/assets/images/prm.png" alt height="24" />
-          </span>
-          <span class="logo-lg">
-            <img src="~/assets/images/prm.png" alt height="20" />
-          </span>
-        </nuxt-link>
-
-        <nuxt-link to="/" class="logo logo-light text-center">
-          <span class="logo-sm">
-            <img src="~/assets/images/prm.png" alt height="24" />
-          </span>
-          <span class="logo-lg">
-            <img src="~/assets/images/prm.png" alt height="20" />
-          </span>
-        </nuxt-link>
-      </div> -->
 
       <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
         <li>
@@ -215,13 +195,13 @@ export default {
             <i class="fe-briefcase mr-1"></i>
             <span>Loyiha qo'shish</span>
           </b-dropdown-item>
-          <b-dropdown-item v-if="user.role === 'admin'" :to="{ name: 'base-projects-add' }">
-            <i class="fe-user mr-1"></i>
-            <span>Moderator/Admin qo'shish</span>
-          </b-dropdown-item>
-          <b-dropdown-item :to="{ name: 'base-projects-add' }">
+          <b-dropdown-item :to="{ name: 'base-cities-add' }">
             <i class="fe-map-pin mr-1"></i>
             <span>Shahar/Tuman qo'shish</span>
+          </b-dropdown-item>
+          <b-dropdown-item v-if="user.role === 'admin'" :to="{ name: 'base-users-add' }">
+            <i class="fe-user mr-1"></i>
+            <span>Moderator/Admin qo'shish</span>
           </b-dropdown-item>
         </b-nav-item-dropdown>
       </ul>

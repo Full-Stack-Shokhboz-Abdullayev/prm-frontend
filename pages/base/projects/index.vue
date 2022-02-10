@@ -149,7 +149,7 @@ import permissionsMixin from "~/mixins/permissions.js";
 import savingAlert from "~/mixins/savingAlert.js";
 import statuses from "~/utils/data-blueprints/statuses.blueprint.js";
 import fields from "~/utils/data-blueprints/project-view.blueprint.js";
-console.log(fields);
+;
 export default {
   head() {
     return {

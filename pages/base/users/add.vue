@@ -91,7 +91,7 @@ export default {
                 label: city.title,
                 value: city.id
               })),
-              key: "cityId"
+              key: "city"
             }
           ]
         }
@@ -101,13 +101,13 @@ export default {
     ifEditing() {
       if (this.editing) {
         const scrape = user => {
-          console.log(user);
           const data = [];
           const fields = this.userData[0].fields;
           for (let index = 0; index < fields.length; index++) {
+            const value = user[fields[index].key];
             const d = {
               ...fields[index],
-              value: user[fields[index].key]
+              value: value?.id ? value.id : value
             };
             data.push(d);
           }
@@ -116,6 +116,9 @@ export default {
 
         setTimeout(() => {
           const editingUser = this.GET_USER_BY_ID(this.editingId);
+          if (!editingUser || editingUser.role === "admin") {
+            this.$router.push({ name: "base-users" });
+          }
           scrape(editingUser);
         }, 0);
       }
@@ -123,7 +126,7 @@ export default {
     async onSave() {
       this.saving = true;
       const success = await this.toDB();
-      console.log(success)
+
       this.saving = false;
       this.fireSwal(success);
       if (success) {
@@ -141,7 +144,7 @@ export default {
         ? await this.UPDATE_USER({
             id: this.editingId,
             data,
-            isCityChanged: data.cityId !== this.initialCityValue
+            isCityChanged: data.city.id !== this.initialCityValue
           })
         : await this.ADD_USER(data);
     }

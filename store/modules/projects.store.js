@@ -48,7 +48,6 @@ export const actions = {
   async UPDATE_PROJECT({ dispatch }, { id, data: paramData, isCityChanged }) {
     let res = true;
     try {
-      console.log(paramData.cancelled);
       const {
         data: { success }
       } = await this.$protectedAxios.patch("/projects/" + id, paramData);
@@ -59,7 +58,6 @@ export const actions = {
             dispatch("modules/cities.store/GET_CITIES", {}, { root: true })
           );
         }
-        await Promise.all(promises);
       }
     } catch (err) {
       res = false;

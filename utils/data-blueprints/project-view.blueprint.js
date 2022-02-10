@@ -92,6 +92,22 @@ export default [
     sortable: true
   },
   {
+    label:
+      "Yillik ishlab chiqarish quvvati o'lchov birligi (misol: kub, kvadrat, o'rin)",
+    key: "yearly_resource_usage_measurement_unit",
+    sortable: true
+  },
+  {
+    label: "Yillik ishlab chiqarish quvvati natural qiymatda",
+    key: "yearly_resource_usage_natural_value",
+    sortable: true
+  },
+  {
+    label: "Yillik ishlab chiqarish hajmi (mln so'm)",
+    key: "yearly_resource_usage_price",
+    sortable: true
+  },
+  {
     label: "RIP 459",
     key: "rip_459",
     formatter: val => boolFormatter(val, ["Bor", "Yo'q"]),
@@ -126,7 +142,7 @@ export default [
     key: "city.title"
   },
   {
-    label: "Xizmat ko'rsatuvchi bank",
+    label: "Xizmat ko'rsatuvchi tijorat banki",
     key: "serving_bank",
     sortable: true
   },

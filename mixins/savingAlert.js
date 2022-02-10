@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 export default pushTo => ({
   methods: {
-    fireSwal(success) {
+    fireSwal(success, errorText) {
       let options = {
         title: "Ma'lumotlar muvaffaqiyatli ravishda saqlandi.",
         icon: "success"
@@ -11,6 +11,7 @@ export default pushTo => ({
       if (!success) {
         options = {
           title: "Afsuski ma'lumotlar saqlanmadi.",
+          text: errorText ? errorText : undefined,
           icon: "error"
         };
       }
@@ -21,7 +22,7 @@ export default pushTo => ({
         }
       });
     },
-    
+
     sure() {
       return Swal.fire({
         title: "Ishonchingiz Komilmi?",

@@ -26,7 +26,6 @@ export default function({ $axios }, inject) {
         originalRequest._retry = true;
         try {
           const { success } = await refreshTokens($axios);
-          console.log(success);
           if (success) {
             return await $protectedAxios(originalRequest);
           }
