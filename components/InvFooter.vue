@@ -11,7 +11,7 @@ export default {}
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-               {{ new Date().getFullYear() }} &copy; PRM Platformasi | <a target="_blank" href="https://beliefy.agency">Beliefy</a> tomonidan ishlab chiqildi.
+               {{ new Date().getFullYear() }} &copy; PRM Platformasi | <a target="_blank" href="https://shox-pro.netlify.app">Abdullaev Shokhboz</a> tomonidan ishlab chiqildi.
             </div>
             <div class="col-md-6">
                 <div class="text-md-right footer-links d-none d-sm-block">
@@ -20,7 +20,7 @@ export default {}
                     <a target="_blank" href="https://beliefy.agency">Yordam</a>
                     <a target="_blank" href="https://beliefy.agency">Biz bilan bog'laning</a>
                 </div>
-            </div>
+            </div>      
         </div>
     </div>
 </footer>

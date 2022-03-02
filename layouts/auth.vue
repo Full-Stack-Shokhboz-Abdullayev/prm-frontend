@@ -17,7 +17,7 @@ export default {
     <!-- end page -->
     <footer class="footer footer-alt">
       {{ new Date().getFullYear() }} &copy; PRM Platformasi |
-      <a target="_blank" href="https://beliefy.agency">Beliefy</a>
+      <a target="_blank" href="https://shox-pro.netlify.app">Shokhboz Abdullaev</a>
       tomonidan ishlab chiqildi.
     </footer>
   </div>
