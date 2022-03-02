@@ -11,7 +11,7 @@ export default pushTo => ({
       if (!success) {
         options = {
           title: "Afsuski ma'lumotlar saqlanmadi.",
-          text: errorText ? errorText : undefined,
+          text: errorText,
           icon: "error"
         };
       }

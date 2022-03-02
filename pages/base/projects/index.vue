@@ -25,15 +25,17 @@
       </div>
       <div class="col-sm-5 add-btn-col d-flex">
         <div class="d-flex align-items-center flex-row-reverse w-100 flex-wrap">
-          <nuxt-link v-if="hasAccess" :to="{ name: 'base-projects-add' }" class="btn btn-primary m-1"
+          <nuxt-link
+            v-if="hasAccess"
+            :to="{ name: 'base-projects-add' }"
+            class="btn btn-primary m-1"
             ><i class="mdi mdi-plus-circle mr-2"></i> Yangi Qo'shish</nuxt-link
           >
-            <button class="btn btn-success m-1"
-              @click="download"
-              ><i class="mdi mdi-download mr-2"></i> Ma'lumotlarni Yuklab Olish</button
-            >
-          </div>
+          <button class="btn btn-success m-1" @click="download">
+            <i class="mdi mdi-download mr-2"></i> Ma'lumotlarni Yuklab Olish
+          </button>
         </div>
+      </div>
     </div>
     <transition name="fade" mode="out-in">
       <CardGroup
@@ -49,13 +51,14 @@
             {{ item.status }}
           </div>
           <b-card-title
-           @click="showInfo(item.id)"
+            @click="showInfo(item.id)"
             class="text-dark card-title open-project mb-3"
-            :id="'prtitle' + item.id">
+            :id="'prtitle' + item.id"
+          >
             <p class="m-0 truncate position-static">
               {{ item.title }}
             </p>
-          
+
             <b-tooltip :target="'title' + item.id" placement="left"
               >Ma'lumot</b-tooltip
             >
@@ -149,7 +152,6 @@ import permissionsMixin from "~/mixins/permissions.js";
 import savingAlert from "~/mixins/savingAlert.js";
 import statuses from "~/utils/data-blueprints/statuses.blueprint.js";
 import fields from "~/utils/data-blueprints/project-view.blueprint.js";
-;
 export default {
   head() {
     return {
@@ -240,7 +242,7 @@ export default {
       this.selectedIndex = this.projects.findIndex(item => item.id === id);
       this.$bvModal.show("modal");
     },
-    
+
     isDate(date) {
       return new Date(date) !== "Invalid Date" && !isNaN(new Date(date));
     },
